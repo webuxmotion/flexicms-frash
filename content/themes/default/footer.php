@@ -1,0 +1,1 @@
+Footer<?=$this->data['name']?>

@@ -17,10 +17,8 @@ class Cms {
 
   public function run() {
     try {
-      $this->router->add('home', '/', 'HomeController:index');
-      $this->router->add('news', '/news', 'HomeController:news');
-      $this->router->add('news-single', '/news/(id:int)', 'HomeController:news');
-       
+      require_once __DIR__ . '/../cms/Route.php'; 
+
       $routerDispatch = $this->router->dispatch(Common::getMethod(), Common::getPathUrl());
 
       if ($routerDispatch == null) {
@@ -35,7 +33,7 @@ class Cms {
       call_user_func_array([new $controller($this->di), $action], $parameters);
       
     } catch (\Exception $e) {
-      echo $e->getMessate();
+      echo $e->getMessage();
       exit;
     }
   }
