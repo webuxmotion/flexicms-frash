@@ -1,6 +1,8 @@
 <?php
-
 return [
   'host' => 'localhost',
-  'username' => 'root'
+  'db_name' => 'cms',
+  'username' => 'root',
+  'password' => '1111',
+  'charset' => 'utf8'
 ];
