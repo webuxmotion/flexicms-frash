@@ -12,9 +12,9 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach($pages as $page) : ?>
+          <?php foreach($pages as $key => $page) : ?>
             <tr>
-              <th scope="row">1</th>
+            <th scope="row"><?=++$key?></th>
               <td>
               <a href="/admin/pages/edit/<?=$page['id']?>">
                   <?=$page['title']?>

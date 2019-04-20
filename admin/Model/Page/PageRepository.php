@@ -40,6 +40,8 @@ class PageRepository extends Model
             $page->setTitle($params['title']);
             $page->setContent($params['content']);
             $page->save();
+
+            return $params['page_id'];
         }
     }
 }

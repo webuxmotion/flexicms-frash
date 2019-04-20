@@ -18,7 +18,7 @@ var page = {
 
             },
             success: function(result){
-
+              window.location = '/admin/pages/edit/' + result;
             }
         });
     },
@@ -41,7 +41,7 @@ var page = {
 
             },
             success: function(result){
-
+              window.location = '/admin/pages/edit/' + result;
             }
         });
     }
