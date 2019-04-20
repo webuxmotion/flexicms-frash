@@ -18,7 +18,7 @@ var page = {
 
             },
             success: function(result){
-                console.log(result);
+
             }
         });
     },
@@ -41,7 +41,7 @@ var page = {
 
             },
             success: function(result){
-                console.log(result);
+
             }
         });
     }
