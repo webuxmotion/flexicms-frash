@@ -2,22 +2,21 @@
 
 namespace Engine;
 
+use Engine\Core\Database\QueryBuilder;
 use Engine\DI\DI;
 
-abstract class Controller {
+abstract class Model {
   protected $di;
   protected $db;
-  protected $view;
   protected $config;
-  protected $request;
-  protected $load;
+
+  public $queryBuilder;
 
   public function __construct(DI $di) {
     $this->di = $di;     
     $this->db = $this->di->get('db');
-    $this->view = $this->di->get('view');
     $this->config = $this->di->get('config');
-    $this->request = $this->di->get('request');
-    $this->load = $this->di->get('load');
+
+    $this->queryBuilder = new QueryBuilder();
   }
 }
