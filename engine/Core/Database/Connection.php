@@ -39,7 +39,7 @@ class Connection {
      * @param int $statement
      * @return array
      */
-    public function query($sql, $values = [], $statement = PDO::FETCH_ASSOC)
+    public function query($sql, $values = [], $statement = PDO::FETCH_OBJ)
     {
         $sth = $this->link->prepare($sql);
         $sth->execute($values);

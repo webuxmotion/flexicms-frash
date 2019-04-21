@@ -3,11 +3,13 @@
 namespace Engine\Core\Template;
 
 use Engine\Core\Template\Theme;
+use Engine\DI\DI;
 
 class View {
   protected $theme;
 
-  public function __construct() {
+  public function __construct(DI $di) {
+    $this->di = $di;
     $this->theme = new Theme(); 
   }
 
@@ -20,7 +22,8 @@ class View {
         sprintf('Template "%s" not found in "%s"', $template, $templatePath)
       );
     }
-
+    
+    $vars['lang'] = $this->di->get('language');
     $this->theme->setData($vars);
     extract($vars);
 
@@ -42,6 +45,6 @@ class View {
         return ROOT_DIR . '/content/themes/default/' . $template . '.php';
     }
 
-    return ROOT_DIR . '/View/' . $template . '.php';
+    return path('view') . '/' . $template . '.php';
   }
 }

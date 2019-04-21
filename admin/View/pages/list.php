@@ -16,11 +16,11 @@
             <tr>
             <th scope="row"><?=++$key?></th>
               <td>
-              <a href="/admin/pages/edit/<?=$page['id']?>">
-                  <?=$page['title']?>
+              <a href="/admin/pages/edit/<?=$page->id?>">
+                  <?=$page->title?>
                 </a>
               </td>
-              <td><?=$page['date']?></td>
+              <td><?=$page->date?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

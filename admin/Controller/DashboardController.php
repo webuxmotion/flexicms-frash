@@ -8,8 +8,8 @@ class DashboardController extends AdminController {
   public function index() {
     $this->load->model('User');
 
-    $this->model->user->test();
-    
+    $this->load->language('dashboard/main'); 
+
     $this->view->render('dashboard');
   }
 }

@@ -13,3 +13,8 @@ $this->router->add('page-edit', '/admin/pages/edit/(id:int)', 'PageController:ed
 // Pages Routes (POST)
 $this->router->add('page-add', '/admin/page/add/', 'PageController:add', 'POST');
 $this->router->add('page-update', '/admin/page/update/', 'PageController:update', 'POST');
+
+// Settings Routes (GET)
+$this->router->add('settings-general', '/admin/settings/general/', 'SettingController:general');
+// Settings Routes (POST)
+$this->router->add('setting-update', '/admin/settings/update/', 'SettingController:updateSetting', 'POST');

@@ -22,6 +22,9 @@ class AdminController extends Controller {
         $this->auth->unAuthorize();
       }
     }
+
+    // Load global language
+    $this->load->language('dashboard/menu');
   } 
 
   public function checkAuthorization() {
