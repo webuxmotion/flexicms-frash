@@ -3,6 +3,8 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/Function.php';
 
+class_alias('Engine\\Core\\Template\\Asset', 'Asset');
+
 use Engine\Cms;
 use Engine\DI\DI;
 

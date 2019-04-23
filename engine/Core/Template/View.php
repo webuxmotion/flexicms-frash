@@ -15,6 +15,8 @@ class View {
 
   public function render($template, $vars = []) {
 
+    include_once $this->getThemePath() . '/functions.php';
+
     $templatePath = $this->getTemplatePath($template, ENV);
 
     if (!is_file($templatePath)) {
@@ -46,5 +48,9 @@ class View {
     }
 
     return path('view') . '/' . $template . '.php';
+  }
+ 
+  public static function getThemePath() {
+      return ROOT_DIR . '/content/themes/default';
   }
 }
