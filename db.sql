@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 21, 2019 at 11:20 AM
+-- Generation Time: Apr 23, 2019 at 07:49 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -13,6 +13,59 @@ SET time_zone = "+00:00";
 --
 -- Database: `cms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`id`, `name`) VALUES
+(2, 'Header Menu'),
+(3, 'Footer Menu'),
+(4, 'My Menu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_item`
+--
+
+CREATE TABLE `menu_item` (
+  `id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL,
+  `parent` tinyint(1) NOT NULL DEFAULT '0',
+  `position` int(11) NOT NULL DEFAULT '999',
+  `link` varchar(255) NOT NULL DEFAULT '#'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `menu_item`
+--
+
+INSERT INTO `menu_item` (`id`, `menu_id`, `name`, `parent`, `position`, `link`) VALUES
+(1, 0, 'Home', 0, 0, '#'),
+(2, 0, 'About', 0, 0, '#'),
+(3, 0, 'Sample post', 0, 0, '#'),
+(4, 0, 'Contact', 0, 0, '#'),
+(6, 2, 'New item 3', 0, 2, '#'),
+(9, 2, 'New item', 0, 0, '#'),
+(11, 2, 'New item', 0, 3, '#'),
+(13, 3, 'New item', 0, 999, '#'),
+(14, 3, 'New item', 0, 999, '#'),
+(15, 3, 'New item', 0, 999, '#'),
+(16, 4, 'New item', 0, 999, '#'),
+(17, 4, 'New item', 0, 999, '#');
 
 -- --------------------------------------------------------
 
@@ -40,7 +93,7 @@ INSERT INTO `page` (`id`, `title`, `content`, `date`) VALUES
 (6, 'first', '<p>first​</p>', '2019-04-20 21:58:48'),
 (7, 'dockertt', '<p>docker content​</p>', '2019-04-20 22:04:28'),
 (8, 'd', '<p>d​</p>', '2019-04-20 22:10:19'),
-(9, 'New', '<p>​new page</p>', '2019-04-21 10:11:22');
+(9, 'Newwwaa', '<p>​new page</p>', '2019-04-21 10:11:22');
 
 -- --------------------------------------------------------
 
@@ -60,8 +113,8 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `name`, `key_field`, `value`) VALUES
-(1, 'Name site', 'name_site', 'Cms'),
-(2, 'Description', 'description', 'Example Description'),
+(1, 'Name site', 'name_site', 'Flexi CMS'),
+(2, 'Description', 'description', 'a Example Description Something new'),
 (3, 'Admin email', 'admin_email', 'admin@admin.com'),
 (4, 'Language', 'language', 'english');
 
@@ -85,7 +138,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `role`, `hash`, `date_reg`) VALUES
-(1, 'admin@admin.com', 'b59c67bf196a4758191e42f76670ceba', 'admin', 'f8e50250e00be3840ba9b180a0da1ac8', '2019-04-16 18:16:33'),
+(1, 'admin@admin.com', 'b59c67bf196a4758191e42f76670ceba', 'admin', '1da6563eeeb0889f83bfd2cbd42cc132', '2019-04-16 18:16:33'),
 (2, 'adminNew@admin.com', 'b59c67bf196a4758191e42f76670ceba', 'user', 'new', '2019-04-20 14:28:25'),
 (3, 'adminNew@admin.com', 'b59c67bf196a4758191e42f76670ceba', 'user', 'new', '2019-04-20 14:28:25'),
 (4, 'adminNew@admin.com', 'b59c67bf196a4758191e42f76670ceba', 'user', 'new', '2019-04-20 14:28:26'),
@@ -97,6 +150,18 @@ INSERT INTO `user` (`id`, `email`, `password`, `role`, `hash`, `date_reg`) VALUE
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_item`
+--
+ALTER TABLE `menu_item`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `page`
@@ -121,6 +186,18 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `menu_item`
+--
+ALTER TABLE `menu_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `page`
