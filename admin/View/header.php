@@ -32,26 +32,14 @@
                 <a class="navbar-brand" href="/admin/">Admin CMS</a>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mr-auto">
+                      <?php foreach (Customize::getInstance()->getAdminMenuItems() as $key => $item): ?>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/admin/">
-                            <i class="icon-speedometer icons"></i><?=$lang->dashboardMenu['home']?>
-                            </a>
+                          <a class="nav-link" href="<?= $item['urlPath'] ?>">
+                              <i class="<?= $item['classIcon'] ?>"></i>
+                              <?= $lang->dashboardMenu[$key] ?>
+                          </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/pages/">
-                                <i class="icon-doc icons"></i> Pages
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/posts/">
-                                <i class="icon-pencil icons"></i> Posts
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="/admin/settings/general/">
-                                <i class="icon-equalizer icons"></i> Settings
-                            </a>
-                        </li>
+                      <?php endforeach; ?> 
                     </ul>
                 </div>
                 

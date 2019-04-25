@@ -7,6 +7,8 @@ use Engine\Model;
 class MenuItemRepository extends Model
 {
     const NEW_MENU_ITEM_NAME = 'New item';
+    const FIELD_NAME = 'name';
+    const FIELD_LINK = 'link';
 
     /**
      * @param int $menuId
@@ -24,6 +26,15 @@ class MenuItemRepository extends Model
 
         return $this->db->query($sql, $this->queryBuilder->values);
     }
+    public function getAllItems()
+    {
+        $sql = $this->queryBuilder
+            ->select()
+            ->from('menu_item')
+            ->orderBy('id', 'ASC')
+            ->sql();
+        return $this->db->query($sql);
+    }
 
     public function add($params = []) {
 
@@ -37,6 +48,20 @@ class MenuItemRepository extends Model
         $menuItemId = $menuItem->save();
 
         return $menuItemId;
+    }
+    public function update($params = [])
+    {
+        if (empty($params)) {
+            return 0;
+        }
+        $menuItem = new MenuItem($params['item_id']);
+        if ($params['field'] == self::FIELD_NAME) {
+            $menuItem->setName($params['value']);
+        }
+        if ($params['field'] == self::FIELD_LINK) {
+            $menuItem->setLink($params['value']);
+        }
+        return $menuItem->save();
     }
 
     public function remove($itemId)
