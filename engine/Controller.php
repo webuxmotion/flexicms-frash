@@ -21,6 +21,8 @@ abstract class Controller
 
     protected $load;
 
+    protected $plugin;
+
     /**
      * Controller constructor.
      * @param DI $di
@@ -60,5 +62,13 @@ abstract class Controller
         }
 
         return $this;
+    }
+
+    public function getRequest() {
+      return $this->request;
+    }
+
+    public function getPlugin() {
+      return $this->plugin;
     }
 }

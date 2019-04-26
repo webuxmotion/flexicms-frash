@@ -19,6 +19,17 @@ class Cms {
     try {
       require_once __DIR__ . '/../' . mb_strtolower(ENV) . '/Route.php'; 
 
+      $pluginService = $this->di->get('plugin');
+      $plugins = $pluginService->getActivePlugins();
+      /** @var \Admin\Model\Plugin\Plugin $plugin */
+      foreach ($plugins as $plugin) {
+          $pluginClass  = '\\Plugin\\' . $plugin->directory . '\\Plugin';
+          $pluginObject = new $pluginClass($this->di);
+          if (method_exists($pluginClass, 'init')) {
+              $pluginObject->init();
+          }
+      }
+
       $routerDispatch = $this->router->dispatch(Common::getMethod(), Common::getPathUrl());
 
       if ($routerDispatch == null) {

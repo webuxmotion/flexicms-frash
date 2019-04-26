@@ -12,7 +12,11 @@
         "Engine\\": "engine",
         "Cms\\": "cms",
         "Admin\\": "admin",
-        "Engine\\DI\\": "engine/DI"
+        "Engine\\DI\\": "engine/DI",
+        "Plugin\\": "content/plugins"
       }
-    }
+    },
+    "files": [
+      "engine/Function.php"
+    ]
 }

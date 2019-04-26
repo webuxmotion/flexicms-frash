@@ -5,7 +5,8 @@ namespace Engine\Core\Database;
 use \ReflectionClass;
 use \ReflectionProperty;
 
-trait ActiveRecord {
+trait ActiveRecord
+{
     /**
      * @var Connection
      */
@@ -40,6 +41,9 @@ trait ActiveRecord {
         return $this->table;
     }
 
+    /**
+     * @return object|null
+     */
     public function findOne()
     {
         $find = $this->db->query(
@@ -70,6 +74,9 @@ trait ActiveRecord {
                     $this->queryBuilder->values
                 );
             } else {
+                print_r($this->queryBuilder->insert($this->getTable())
+                    ->set($properties)
+                    ->sql());
                 $this->db->execute(
                     $this->queryBuilder->insert($this->getTable())
                         ->set($properties)
@@ -92,6 +99,10 @@ trait ActiveRecord {
         $properties = [];
 
         foreach ($this->getProperties() as $key => $property) {
+            if ($property->getName() == 'id') {
+                continue;
+            }
+
             if (isset($this->{$property->getName()})) {
                 $properties[$property->getName()] = $this->{$property->getName()};
             }
