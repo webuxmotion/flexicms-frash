@@ -1,23 +1,17 @@
 <?php
-
 namespace Admin\Model\Page;
-
 use Engine\Core\Database\ActiveRecord;
-
 class Page
 {
     use ActiveRecord;
-
     protected $table = 'page';
-
     public $id;
-
     public $title;
-
     public $content;
-
+    public $segment;
+    public $type;
+    public $status;
     public $date;
-
     /**
      * @return mixed
      */
@@ -25,7 +19,6 @@ class Page
     {
         return $this->id;
     }
-
     /**
      * @param mixed $id
      */
@@ -33,7 +26,6 @@ class Page
     {
         $this->id = $id;
     }
-
     /**
      * @return mixed
      */
@@ -41,7 +33,6 @@ class Page
     {
         return $this->title;
     }
-
     /**
      * @param mixed $title
      */
@@ -49,7 +40,6 @@ class Page
     {
         $this->title = $title;
     }
-
     /**
      * @return mixed
      */
@@ -57,7 +47,6 @@ class Page
     {
         return $this->content;
     }
-
     /**
      * @param mixed $content
      */
@@ -65,7 +54,6 @@ class Page
     {
         $this->content = $content;
     }
-
     /**
      * @return mixed
      */
@@ -73,12 +61,53 @@ class Page
     {
         return $this->date;
     }
-
     /**
      * @param mixed $date
      */
     public function setDate($date)
     {
         $this->date = $date;
+    }
+    /**
+     * @return mixed
+     */
+    public function getSegment()
+    {
+        return $this->segment;
+    }
+    /**
+     * @param mixed $segment
+     */
+    public function setSegment($segment)
+    {
+        $this->segment = $segment;
+    }
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 }

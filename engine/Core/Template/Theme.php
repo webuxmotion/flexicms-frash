@@ -15,7 +15,7 @@ class Theme
         'sidebar' => 'sidebar-%s',
     ];
 
-    const URL_THEME_MASK = '%/content/themes/%s';
+    const URL_THEME_MASK = '/%/content/themes/%s';
 
     /**
      * Url current theme
