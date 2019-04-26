@@ -55,4 +55,9 @@ class Customize
     {
         return $this->getConfig()->get('dashboardMenu');
     }
+
+    public function getAdminSettingItems()
+    {
+        return $this->getConfig()->get('settingMenu');
+    }
 }

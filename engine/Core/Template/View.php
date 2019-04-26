@@ -53,14 +53,18 @@ class View {
 
     echo ob_get_clean();
   }
-
-  private function getTemplatePath($template, $env) {
-    if ($env == 'Cms') {
-        return ROOT_DIR . '/content/themes/default/' . $template . '.php';
+  private function getTemplatePath($template, $env = null)
+    {
+        if ($env === 'Cms') {
+            $theme = \Setting::get('active_theme');
+            if ($theme == '') {
+                $theme = \Engine\Core\Config\Config::item('defaultTheme');
+            }
+            return ROOT_DIR . '/content/themes/' . $theme . '/' . $template . '.php';
+        }
+        return path('view') . '/' . $template . '.php';
     }
 
-    return path('view') . '/' . $template . '.php';
-  }
  
   public static function getThemePath() {
       return ROOT_DIR . '/content/themes/default';

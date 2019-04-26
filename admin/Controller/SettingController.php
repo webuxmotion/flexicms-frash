@@ -29,6 +29,13 @@ class SettingController extends AdminController {
     $this->view->render('setting/menus', $this->data);
   }
 
+  public function themes() {
+
+      $this->data['themes'] = getThemes();
+      $this->data['activeTheme'] = \Setting::get('active_theme');
+      $this->view->render('setting/themes', $this->data);
+  }
+
   public function ajaxMenuAdd() {
 
     $params = $this->request->post;
@@ -102,5 +109,12 @@ class SettingController extends AdminController {
     $params = $this->request->post;
     $this->model->setting->update($params);
   }
+
+    public function activateTheme()
+    {
+        $params = $this->request->post;
+        $this->load->model('Setting');
+        $this->model->setting->updateActiveTheme($params['theme']);
+    }
 }
 ?>
